@@ -1,0 +1,114 @@
+//KC03M4F  JOB 'REAL ORTELLI',                                          00010004
+//             MSGLEVEL=(1,1),                                          00020004
+//             MSGCLASS=H,                                              00030004
+//             NOTIFY=&SYSUID                                           00040013
+//*            TYPRUN=SCAN                                              00050012
+//*                                                                     00060000
+//* JCL ASSIGNMENT 4 - REAL ORTELLI                                     00070000
+//*                                                                     00080000
+//STEPDEL  EXEC PGM=IDCAMS                                              00081015
+//SYSPRINT DD SYSOUT=H                                                  00082015
+//SYSIN    DD *                                                         00083015
+   DELETE KC03M4F.COMP52.REAL.PDS                                       00084015
+/*                                                                      00085015
+//STEPONE  EXEC PGM=IEFBR14                                             00090005
+//NEWFILE  DD DSN=KC03M4F.COMP52.REAL.PDS,                              00100004
+//             DISP=(NEW,CATLG,DELETE),                                 00101003
+//             UNIT=SYSDA,                                              00110003
+//             DCB=(LRECL=80,BLKSIZE=400,RECFM=FB,DSORG=PO),            00120003
+//             SPACE=(TRK,(6,1,1))                                      00130003
+//STEPTWO  EXEC PGM=IDCAMS                                              00140007
+//SYSPRINT DD SYSOUT=H                                                  00141007
+//SYSIN    DD *                                                         00142007
+   LISTCAT NONVSAM -                                                    00143014
+         ENTRIES(KC03M4F.COMP52.REAL.PDS)                               00143114
+/*                                                                      00144007
+//STEP3    EXEC PGM=IEBUPDTE,PARM=NEW                                   00150007
+//SYSPRINT DD SYSOUT=H                                                  00160007
+//SYSUT2   DD DSN=*.STEPONE.NEWFILE,                                    00170010
+//            DISP=(OLD,PASS)                                           00171011
+//SYSIN    DD DATA                                                      00180007
+./ ADD NAME=SAMPLE,LIST=ALL                                             00190007
+./ NUMBER NEW1=1,INCR=1                                                 00200007
+RAY                                                                     00201016
+./ ADD NAME=COPYPROC,LIST=ALL                                           00210007
+./ NUMBER NEW1=2,INCR=1                                                 00220016
+//COPYPROC PROC WHAT='(SHR,KEEP)',OCLASS=A,                             00241007
+//           TYPE=3390,VOL=STPK01                                       00242007
+//COPY     EXEC PGM=IEBGENER                                            00243007
+//SYSUT2   DD DSN=&FILE,                                                00244007
+//            DISP=(NEW,PASS,DELETE),                                   00245007
+//            UNIT=&TYPE,                                               00246007
+//            VOL=SER=&VOL,                                             00247007
+//            SPACE=&SIZE,                                              00248007
+//            DCB=(LRECL=80,BLKSIZE=800,RECFM=FB)                       00249007
+//SYSPRINT DD SYSOUT=&OCLASS                                            00249107
+//SYSIN    DD DUMMY                                                     00249207
+//PRINT    EXEC PGM=IEBPTPCH                                            00249307
+//SYSPRINT DD SYSOUT=&OCLASS                                            00249407
+//SYSUT1   DD DSN=&FILE,                                                00249507
+//            DISP=&WHAT                                                00249607
+//SYSUT2   DD SYSOUT=&OCLASS                                            00249707
+./ ADD NAME=POLYFILE,LIST=ALL                                           00250007
+./ NUMBER NEW1=3,INCR=1                                                 00260016
+13009REED,TINA              A0842000426072100    74                     00271007
+15174HANDJANY,HAIDEH        H0229000220022900    71                     00272007
+17337BUTERO,MAURICE         H0501000434050100    63                     00273007
+19499LAFER,BRUCE            A0706000819050000    52                     00274007
+21661LEE,SUI                A0390170303030017    76                     00275007
+23821COOPER,LUCY            L0745000730070000    64                     00276007
+25980NELSON,LAWRENCE        L0513000217051300    78                     00277007
+28138KRUKIS,SONIA           A0346000510034600    59                     00278007
+30295CHEN,YIN               H0295000514010000    81                     00279007
+32451SIMPKINS,KEVIN         L0388000321038806    76                     00279107
+34605PORTER,MICHELE         A0627500128042700    65                     00279207
+36759DECICCO,RICHARD        A0255000619010000    71                     00279307
+41063HIGH,CAROL             L0311000521031100    82                     00279407
+43214ENGLISH,REYNOLDS       A0443000228043300    82                     00279507
+4563LEE,BOHYON              A0515000214050000    79                     00279607
+47512THOMPSON,STANLEY       H0640750307064075    66                     00279707
+49659VALDEZ,FABIO           L0706000430070600    71                     00279807
+51805AMATO,ROBERT           A0466000417015000    63                     00279907
+53950RIZZUTO,JAMES          A0693000822000000    81                     00280007
+56094SCHWARTZ,MICHAEL       H1037000605050000    67                     00280107
+58238RUFINO,CARLOS          L0673000520047300    64                     00280207
+60380MORLEY,JOHN            A0786000514078600    71                     00280307
+62521BREVIL,JAMES           H0812000314081200    55                     00280407
+64660FALCONER,EDWARD        L1080000227008000    74                     00280507
+66799MARTIN,KATHLEEN        L0895000129089500    65                     00280607
+68037YEUNG,SUK              A0517000816050000    49                     00280707
+71074PAUL,MARINA            A0441000414034100    80                     00280807
+73210FRADIN,SHIRLEY         L0668000728066800    56                     00280907
+75344BURNS,JEFFREY          L0706000226070000    57                     00281007
+77478KATZ,HAL               A0485000406038500    64                     00281107
+79610WRIGHT,DONNA           H0926000901092000    75                     00281207
+81742CUOMO,DONNA            L0900000313090000    69                     00281307
+83872LOPEZ,ANNA             A0679000716010000    80                     00281407
+86002ALEXANDER,LISA         A0402000623030200    73                     00281507
+88130GOLDBERG,LORI          H0987000524095000    67                     00281607
+92057HOFAN,PATRICIA         H0737000315040000    77                     00281707
+92384PUGH,CLIFFORD          A0750000423075000    80                     00281807
+94509FERRIS,LAURA           A0135000815013500    73                     00281907
+96633BERGIN,MICHAEL         L1608000116100000    74                     00282007
+./ ENDUP                                                                00283007
+/*                                                                      00290007
+//STEP4    EXEC PGM=IDCAMS                                              00300007
+//SYSPRINT DD SYSOUT=H                                                  00301007
+//SYSIN    DD *                                                         00302007
+   DELETE KC03M4F.COMP52.REAL.PDS(SAMPLE)                               00310007
+/*                                                                      00320007
+//STEP5    EXEC PGM=IEBPTPCH                                            00330007
+//SYSUT1   DD DSN=*.STEPONE.NEWFILE,                                    00340010
+//            DISP=(SHR,CATLG)                                          00341017
+//SYSUT2   DD SYSOUT=H                                                  00350007
+//SYSPRINT DD SYSOUT=H                                                  00360007
+//SYSIN    DD *                                                         00370007
+   PRINT MAXFLDS=2,TYPORG=PO,MAXNAME=2                                  00380007
+   TITLE ITEM=('MY REPORT',30)                                          00390017
+   MEMBER NAME=COPYPROC                                                 00400007
+   RECORD FIELD=(80)                                                    00410007
+   MEMBER NAME=POLYFILE                                                 00420007
+   RECORD FIELD=(80)                                                    00430007
+/*                                                                      00440007
+//                                                                      00450007
+

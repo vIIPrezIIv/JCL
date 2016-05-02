@@ -1,0 +1,87 @@
+//KC03M4F  JOB 'REAL ORTELLI',                                          00010001
+//             MSGCLASS=H,                                              00020001
+//             MSGLEVEL=(1,1),                                          00030001
+//             NOTIFY=&SYSUID                                           00040003
+//*            TYPRUN=SCAN                                              00050003
+//*                                                                     00060001
+//* JCL ASSIGNMENT 3: REAL ORTELLI                                      00070001
+//*                                                                     00080001
+//*                                                                     00090001
+//*                                                                     00100001
+//         JCLLIB ORDER=SLC.CPA.SOURCE.PDS                              00110001
+//STEPONE  EXEC COPYPROC,                                               00120001
+//             FILE='&&TEMP',                                           00130001
+//             OCLASS=H,                                                00131002
+//             VOL=,                                                    00132001
+//             SIZE='(TRK,3,RLSE)',                                     00133001
+//             TYPE=SYSDA,                                              00140002
+//             WHAT='(SHR,DELETE)'                                      00150001
+//*COPY.SYSUT1 DD DSN=SLC.CPA.SOURCE.PDS(STUDTRAN),                     00160001
+//*             DISP=(SHR)                                              00170001
+//COPY.SYSUT1 DD *                                                      00171001
+13472ANDERSON,MARY           F739801   MK   064064342                   00171102
+18596BAKMAN,MICHAEL          M729701   IS   056034218                   00171202
+19623CARR,MICHELE            F708909   MK   076062254                   00171302
+20485CORNEJO,FRANK           M729809   HR   034032271                   00171402
+21849GORDON,BARBARA          F689901   AC   024024216                   00171502
+22468PERNA,JUDY              F679101   HR   048048400                   00171602
+28591KAPLAN,ANN              F739709   IS   064060341                   00171702
+34163LEHEY,JANETTE           F689701   MK   116042192                   00171802
+35926MARICIC,JAMES           M729809   HR   072060246                   00171902
+37482ROSENBERG,SCOTT         M799601   IS   036036301                   00172002
+38597SAGINARIO,LOUIE         M719909   IS   097097286                   00172102
+39432SCHNEYMAN,PAUL          M709809   MK   112112382                   00172202
+39582SCOTT,JOAN              F799701   AC   124120352                   00172302
+40613SIRACUSANO,COSMO        M739509   HR   086084275                   00172402
+41563YEE,MARY                F709901   IS   046036200                   00172502
+42691WRIGHT,JAMAL            M729909   IS   054054256                   00172602
+43719VAZQUEZ,JAMES           M719409   MK   046030192                   00172702
+44827ROSENBERG,STEVE         M739601   AC   038034257                   00172802
+45927RICHARDS,RANDY          F719909   ET   077070284                   00172902
+46218KISAREWSKI,MICHAEL      M739801   DP   026026341                   00173002
+47526YEUNG,SUE               F729709   LA   029020284                   00173102
+49627VOLIKAS,PAUL            M649801   LA   034034261                   00173202
+49747RUBIO,EDGAR             M739909   DP   042032217                   00173302
+49982REEKSTIN,ROBIN          F729701   DP   076076381                   00173402
+50621NOBLESALA,FERNANDO      M649809   ET   137042201                   00173502
+51276MURRY,RITA              F749801   LA   027025284                   00173602
+51384MOLINA,ANGELA           F789701   AC   047045252                   00173702
+51486SALERNO,ROBERT          M709809   LA   038030147                   00173802
+52924LYNCH,PATRICIA          F759901   DP   032032352                   00173902
+54621LEW,SUK YI              F729509   MT   047040259                   00174002
+55609BERGAMASCO,MARGARET     F659909   DP   062062384                   00174102
+57842CAVE,REBECCA            F739709   AT   037030199                   00174202
+59027FRANKLIN,CARL           M659809   DP   042042259                   00174302
+61347JEREZ,PATRICIA          F709709   LA   044029218                   00174402
+64983MANOZA,SILVIA           F629801   DP   046044337                   00174502
+66717FISHER,STEVEN           M749906   ET   026026261                   00174602
+67849GREENE,DAVID            M629909   LA   046040289                   00174702
+70316HARRISON,MARIE          F749709   ET   026020214                   00174802
+72946HIGGINS,PAULA           F719801   DP   060060259                   00174902
+75984BUTTERALL,PAT           F719901   DP   060060259                   00175002
+77925ROBERTSON,EVAN          M719901   DP   060060259                   00175102
+79989FORTIN,MIKE             M719901   DP   060060259                   00175202
+81941SMITH,ALICE             F719901   DP   060060259                   00175302
+83998PORTER,SAM              M719801   DP   060060259                   00175402
+84903HERBERTSON,MELISSA      F719901   DP   060060259                   00175502
+96939LEE,TOM                 M719701   DP   060060259                   00175602
+97903MACKENZIE,SUE           F719901   DP   060060259                   00175702
+98947CARNEGIE,JEFF           M719701   DP   060060259                   00175802
+99972NELSON,JOHN             M719801   DP   060060259                   00175902
+/*                                                                      00176002
+//PRINT.SYSIN DD *                                                      00180001
+  PRINT MAXFLDS=1                                                       00190001
+  RECORD FIELD=(80)                                                     00191001
+/*                                                                      00200001
+//* QUESTION #2                                                         00200102
+//*                                                                     00201002
+//*//STEPONE EXEC ONETWO                                                00210002
+//*//            NAME='DATAFILE'                                        00220002
+//*//            STATUS=KEEP,                                           00230002
+//*//ONE.OUT DD UNIT=TAPE,                                              00270002
+//*//            SPACE=                                                 00280002
+//*//ONE.IN DD *                                                        00310002
+//*DATA                                                                 00350002
+//*/*                                                                   00360002
+//                                                                      00380002
+

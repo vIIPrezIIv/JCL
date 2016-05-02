@@ -1,0 +1,70 @@
+//KC03M4F  JOB 'REAL ORTELLI',                                          00010001
+//             MSGCLASS=H,                                              00020001
+//             MSGLEVEL=(1,1),                                          00030001
+//             NOTIFY=KC03M4F                                           00040002
+//*            TYPRUN=SCAN                                              00050002
+//*                                                                     00060001
+//* ASSIGNMENT 2 REAL ORTELLI                                           00070001
+//*                                                                     00080001
+//STEPONE  EXEC PGM=IEBPTPCH                                            00090001
+//SYSPRINT DD SYSOUT=H                                                  00100003
+//SYSUT1   DD DSN=KC03M4F.COMP52.POLYFILE,                              00110004
+//            DISP=(SHR,KEEP,KEEP)                                      00120004
+//SYSUT2   DD SYSOUT=H                                                  00121004
+//SYSIN    DD *                                                         00130004
+  PRINT MAXFLDS=7,MAXGPS=7,MAXLITS=23,STOPAFT=32767                     00140006
+  TITLE ITEM=('INSURANCE POLICY DATA SET',30)                           00141006
+  TITLE ITEM=('NUMBER',0),                                              00150001
+        ITEM=('NAME',15),                                               00160001
+        ITEM=('TYPE',26),                                               00170008
+        ITEM=('PREMIUM',34),                                            00171007
+        ITEM=('DUE DATE',45),                                           00172007
+        ITEM=('YTD PMTS',55),                                           00173007
+        ITEM=('YEAR',64)                                                00174007
+  RECORD FIELD=(5,1,,1),                                                00174106
+         FIELD=(20,6,,7),                                               00174206
+         FIELD=(1,29,,27),                                              00174306
+         FIELD=(6,30,,34),                                              00174406
+         FIELD=(4,36,,46),                                              00174506
+         FIELD=(6,40,,55),                                              00174606
+         FIELD=(2,50,,64)                                               00174706
+/*                                                                      00180001
+//*STEPTWO  EXEC PGM=IEFBR14                                            00190001
+//*DELETE   DD DSN=KC03M4F.COMP52.POLYFILE,                             00200001
+//*            DISP=(OLD,DELETE,DELETE)                                 00210001
+//*                                                                     00220009
+//*                                                                     00230009
+//* QUESTION #2                                                         00240009
+//*                                                                     00250009
+//*KC03M4F  JOB 'ABC123',                                               00260009
+//*             CLASS=V,                                                00270009
+//*             MSGLEVEL=(2,1),                                         00280009
+//*             MSGCLASS=P,                                             00290009
+//*             TIME=(1,30),                                            00300009
+//*             TYPRUN=SCAN,                                            00310009
+//*             PAGES=(50,CANCEL),                                      00320009
+//*             NOTIFY=KC03M4F                                          00330009
+//*                                                                     00331009
+//* QUESTION #3A                                                        00340009
+//*                                                                     00350009
+//*RECEIPTS DD DSN=RECPTS.RECEIPTS,                                     00360009
+//*            DISP=(CATLG,UNCATLG,UNCATLG),                            00370009
+//*            DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB),                   00371009
+//*            SPACE=(1000,(1667,34)),                                  00380009
+//*            UNIT=SYSDA                                               00390009
+//*                                                                     00400009
+//* QUESTION #3B                                                        00410009
+//*                                                                     00420009
+//*INVMAST  DD DSN=INVTRX,                                              00430009
+//*            DISP=(CATLG,UNCATLG,UNCATLG)                             00440009
+//*                                                                     00450009
+//* QUESTION #3D                                                        00460009
+//*                                                                     00470009
+//*DD1      DD DSN=TEMP,                                                00480009
+//*            DISP=(NEW,DELETE,DELETE),                                00490009
+//*            DCB=(LRECL=215,BLKSIZE=1505,RECFM=FB),                   00500009
+//*            SPACE=(1505,429),                                        00510009
+//*            UNIT=VIO                                                 00520009
+//*                                                                     00580009
+//                                                                      00590009
+

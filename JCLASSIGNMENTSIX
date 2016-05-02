@@ -1,0 +1,54 @@
+//KC03M4F  JOB (ABC,123),
+//             'REAL ORTELLI',
+//             CLASS=B,
+//             MSGCLASS=H,
+//             MSGLEVEL=(1,1),
+//             NOTIFY=&SYSUID,
+//             TIME=(1,30),
+//             LINES=10000,
+//             TYPRUN=SCAN
+//OUT      OUTPUT CLASS=M,
+//             CONTROL=TRIPLE
+//STEP1    EXEC PGM=SLSLOAD,
+//             TIME=(,30)
+//NEWSLS   DD *
+  TEST1
+  TEST2
+  TEST3
+/*
+//BADSLS   DD SYSOUT=*
+//VALSLS   DD DSN=&&TEMP,
+//             DISP=(NEW,PASS,DELETE),
+//             UNIT=SYSDA,
+//             DCB=(LRECL=600,BLKSIZE=2400,RECFM=FB),
+//             SPACE=(2400,(500,14),RLSE,)
+//STEP2    EXEC PGM=PROCSLS,
+//             COND=(8,GT)
+//STEPLIB  DD DSN=SALES.LIB,
+//             DISP=SHR
+//ACCTFILE DD DSN=CUSTACCT,
+//             DISP=(SHR,UNCATLG,KEEP)
+//BKUPSLS  DD DSN=ACCTBKUP,
+//             DISP=(OLD,KEEP,KEEP),
+//             UNIT=TAPE,
+//             VOL=SER=K00456,
+//             LABEL=2
+//SALES    DD DSN=*.STEP1.VALSLS,
+//             DISP=(SHR,DELETE,DELETE)
+//UPDSLS   DD DSN=UPDACCTS,
+//             DISP=(NEW,CATLG,KEEP),
+//             UNIT=SYSDA,
+//             VOL=SER=ACCTPK,
+//             DCB=*.STEP1.VALSLS,
+//             SPACE=(2400,(500,14),,,ROUND),
+//             RETPD=90
+//REJFILE  DD DSN=REJECTS,
+//             DISP=(NEW,KEEP,DELETE),
+//             UNIT=SYSDA,
+//             VOL=SER=ACCTPK,
+//             DCB=(LRECL=120,BLKSIZE=600,RECFM=FB),
+//             SPACE=(600,5000,,CONTIG)
+//INVOICE  DD SYSOUT=*,
+//             COPIES=3
+//
+
